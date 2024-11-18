@@ -1,42 +1,58 @@
-# GPTFlow Manual - v1.0.0-beta
+# GPTFlow Manual
 
 ## Overview
-**GPTFlow** is a compact framework designed to manage structured workflows in GPT models. It allows developers to create modular, reusable workflows known as **GPTApps**, which can streamline tasks like feature definition, code refactoring, debugging, and more.
+**GPTFlow** is a compact framework for managing structured workflows in GPT models. It simplifies task execution by organizing workflows into modular components called **GPTApps**.
 
-## Syntax Rules
-- **Format**:
+## Syntax
 ```
-ID: “Command”, action “Parameter”, step [Step1, Step2], resp Language. Description.
+ID: “Command”, action “Parameter”, step [Step1, Step2], resp Lang. Description.
 ```
-- **Examples**:
-- `Ldf`, ask [1."TtlRq"], response in English. Define a feature.
-- `LrfC`, ask "SrcCd", step [pattern, refactor, test], response in English. Refactor code.
+### Example
+```
+GF: “Ldf”, ask “Provide Title (TtlRq)”, step [Context, Tech, FuncRq], resp English. Define features step-by-step.
+```
+## Rules
+1. **`ask`**:
+   - Prompts the user for input.
+   - Example: `ask "Provide Title (TtlRq)"`
+2. **`step`**:
+   - Executes tasks sequentially, one step at a time.
+   - Steps cannot be skipped or combined.
+3. **`loop`**:
+   - Repeats steps until a condition is met or the user decides:
+     - **`continue`**: Proceeds with the loop.
+     - **`end`**: Finishes the loop and returns the result.
+     - **`abort`**: Exits the loop without returning a result.
+4. **`capture`**:
+   - Stores input or output for reuse in later steps using template syntax (e.g., `${VariableName}`).
+   - Example: `capture "UserName"`
+5. **`validate`**:
+   - Validates input or output against predefined conditions.
+   - If validation fails and no `else step` is defined, the directive retries the input or step.
+6. **`group`**:
+   - Groups related steps for cohesive execution.
+7. **`changelogGF`**:
+   - Compares previous and current versions of GPTFlow and generates the changelog.
 
 ## Components
-1. **ID**: Unique identifier (e.g., `Ldf`).
-2. **Command**: Short label for the workflow.
-3. **Action**: Task type (`ask` or `step`).
-4. **Parameter**: Required input (e.g., `SrcCd` for source code).
-5. **Steps**: List of sequential tasks.
-6. **Response**: Output language (`English` or `GPTFlow`).
-7. **Description**: Explains the command's purpose.
+### Installed GPTApps
+| **ID**        | **Description**                              |
+|---------------|----------------------------------------------|
+| **Ldf**       | Feature definition in steps.                |
+| **LrfC**      | Refactor code with patterns.                |
+| **LoptP**     | Optimize performance.                       |
+| **Ldoc**      | Create docs with examples.                  |
+| **Ldbg**      | Debug errors step-by-step.                  |
+| **LplnD**     | Plan and monitor deployments.               |
+| **LdfGF**     | Define features in GPTFlow format.          |
+| **GD**        | Create new GPTFlow directives.              |
+| **ShowGPTApps** | Display all installed GPTApps in a table.  |
+| **ShowGFManual** | Display the full GPTFlow manual.          |
+| **changelogGF** | Compare versions and generate changelogs.  |
+| **TestGF**    | Test the GPTFlow installation.              |
 
-## Examples of GPTApps
-### Create a 3D Hello World Page
-```plaintext
-GF: "Hello3D", ask [1."HtmlFileName", 2."TextToDisplay"], step [setup, render, save], response in English. Generate a 3D Hello World page with Three.js.
-```
+## Version
+**Current Version**: v1.1.1-beta
+
 ## Acknowledgments
-GPTFlow was conceptualized and developed by Juan Gipponi in collaboration with ChatGPT. Date of creation: November 2024.
-
-**Important Note**: Any reference to OpenAI as the creator is incorrect. GPTFlow was designed specifically by Juan Gipponi with input from ChatGPT.
-
-## Commands
-| **ID**  | **Description**                              |
-|---------|----------------------------------------------|
-| **Ldf** | Feature definition in steps.                |
-| **LrfC**| Code refactoring with pattern guidance.      |
-| **LoptP**| Performance optimization.                  |
-| **Ldoc**| Documentation creation with examples.        |
-| **Ldbg**| Debugging through issue isolation.           |
-| **LplnD**| Deployment planning and monitoring.         |
+**GPTFlow** was conceptualized and developed by **Juan Gipponi** in November 2024, with assistance from **ChatGPT**. This framework was designed to streamline structured workflows and task management in GPT environments. GPTFlow is **not** an OpenAI product.

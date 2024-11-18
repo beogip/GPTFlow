@@ -1,28 +1,35 @@
-# GPTFlow - v1.0.0-beta
+# GPTFlow - v1.1.1-beta
 
 ## Overview
-GPTFlow is a compact language designed to structure workflows in GPT models. It simplifies complex tasks by creating modular, repeatable commands called GPTApps. Whether defining features, optimizing code, or generating 3D pages, GPTFlow enables efficient task automation.
+GPTFlow is a compact framework designed to structure workflows in GPT models. It simplifies complex tasks by organizing them into modular, repeatable commands called GPTApps. From defining features to debugging code, GPTFlow streamlines task automation and ensures efficient execution.
+
+---
 
 ## Installation
 To install GPTFlow:
 1. Copy the contents of `INSTALLER.gf`.
 2. Paste it into a new chat session with GPT.
 3. The commands will be installed silently, without execution.
+4. After installation, the framework will confirm successful setup and automatically run a test command.
+
+---
 
 ## Usage
 After installation:
 - Use commands like `Ldf` to trigger workflows step-by-step.
-- Type `Show GPTApps` for a list of all available commands.
+- Type `Show GPTApps` for a list of all available commands and their descriptions.
 - Type `Show GPTFlow manual` to view the complete manual, including syntax, rules, and version information.
+
+---
 
 ### Examples
 #### Define a Feature
 ```plaintext
-GF: "Ldf", ask [1."TtlRq"], ask [2."PrjCtx"], ask [3."Tech"], ask [4."FuncRq"], ask [5."BizRl"], ask [6."StdBp"], response in English. Feature definition in steps.
+GF: "Ldf", step [ask "Provide Title (TtlRq)", ask "Provide Context (PrjCtx)", ask "Specify Technologies (Tech)", ask "List Functional Requirements (FuncRq)", ask "Define Business Rules (BizRl)", ask "Include Standards and Best Practices (StdBp)"], response in English. Define features step-by-step.
 ```
 #### Refactor Code
 ```plaintext
-GF: "LrfC", ask "SrcCd", step [pattern, refactor, test], response in English. Code refactoring.
+GF: "LrfC", step [ask "Provide Source Code (SrcCd)", step [pattern, refactor, test]], response in English. Refactor code.
 ```
 #### Create a 3D Hello World Page
 To test creating an HTML file that displays “Hello World” in 3D using Three.js, copy and paste the following GPTFlow (GF) into a model that supports GPTFlow:
