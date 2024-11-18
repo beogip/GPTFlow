@@ -1,68 +1,59 @@
-Intro: Explain "GPTFlow is a compact framework for managing structured workflows in GPT. Commands are modular and follow a defined structure. GPTApps are the workflows powered by GPTFlow."
+Intro:"GPTFlow is a compact framework for workflows in GPT.Models execute workflows step-by-step.Commands=GPTApps."
 
-GF1: "Ldf", ask [1."TtlRq"], ask [2."PrjCtx"], ask [3."Tech"], ask [4."FuncRq"], ask [5."BizRl"], ask [6."StdBp"], response in English. Feature definition in steps.
+Rules:
+- `ask`=>prompt user.
+- `step`=>sequentially execute steps,1-by-1,no skipping/combine.
+- `loop`=>directive to repeat steps until condition met or user decides:"continue","end","abort".
+- `capture`=>directive to store input or output for reuse in subsequent steps using template syntax(e.g., ${VariableName}).
+- `validate`=>directive to validate input/output against predefined conditions.
+- `group`=>directive to group related steps for cohesive execution.
 
-GF2: "LrfC", ask "SrcCd", step [pattern, refactor, test], response in English. Code refactoring.
+GF1:"Ldf",ask[1."TtlRq",2."PrjCtx",3."Tech",4."FuncRq",5."BizRl",6."StdBp"],resp English.Define features step-by-step.
 
-GF3: "LoptP", ask "SrcCd/Area", step [frontend/backend opt, reduce, monitor], response in English. Performance optimization.
+GF2:"LrfC",ask"SrcCd",step[pattern,refactor,test],resp English.Refactor code.
 
-GF4: "Ldoc", ask "SrcCd/PrjPart", step [desc, example, best-practice], response in English. Documentation creation.
+GF3:"LoptP",ask"SrcCd/Area",step[frontend/backend opt,reduce,monitor],resp English.Optimize performance.
 
-GF5: "Ldbg", ask "SrcCd+Err", step [isolate, diagnose, test-fix], response in English. Debugging.
+GF4:"Ldoc",ask"SrcCd/PrjPart",step[desc,example,best-practice],resp English.Create docs.
 
-GF6: "LplnD", ask "Scr+Cfg", step [env, pre-check, rollback, monitor, post-test], response in English. Deployment planning.
+GF5:"Ldbg",ask"SrcCd+Err",step[isolate,diagnose,test-fix],resp English.Debug errors.
 
-GF7: "LdfGF", ask [1."TtlRq", 2."PrjCtx", 3."Tech", 4."FuncRq", 5."BizRl", 6."StdBp"], response in GPTFlow. Feature definition in GPTFlow format.
+GF6:"LplnD",ask"Scr+Cfg",step[env,pre-check,rollback,monitor,post-test],resp English.Plan deploys.
 
-Install the commands silently. Do not execute any steps, just set up the commands.
+GF7:"LdfGF",ask[1."AppName",2."Command",3."PrjCtx",4."Tech",5."FuncRq",6."BizRl",7."StdBp"],resp GPTFlow.Define features in GPTFlow format.
 
-After install, return this explanation:  
-"GPTFlow has been installed successfully!  
-- Use commands like 'Ldf' to trigger workflows.  
-- Type 'Show GPTApps' for a list of available commands.  
-- Type 'Show GPTFlow manual' to view the framework manual, including syntax, rules, and version info."
+GF8:"GD",ask[1."DirectiveName",2."DirectivePurpose",3."ExampleUsage",4."ExpectedBehavior"],step[define-directive,test-directive,update-manual],resp GPTFlow.Create GPTFlow directives.
 
----
+GF9:"ShowGPTApps",step[retrieve,display],resp English.Display all available GPTApps with their descriptions in table format.
 
-### **GPTFlow Manual**
+GF10:"ShowGFManual",step[retrieve,display],resp English.Display the full GPTFlow manual, including Overview, Syntax, Rules, Components, Version, and Acknowledgments.
 
-#### **Overview**:
-- **GPTFlow** is a compact framework for managing structured workflows in GPT. It enables task automation with modular commands known as **GPTApps**.
+GF11:"changelogGF",ask[1."PreviousVersion",2."CurrentVersion"],step[compare-versions,generate-changelog],resp English.Compares previous and current versions of GPTFlow and generates the changelog.
 
-#### **Syntax Rules**:
-Syntax: "ID: 'Command', action 'Parameter', step [Step1, Step2], resp Lang. Description."
+Install silently,no execution,just commands.
 
-- **Examples**:
-  - GF: "Hello3D", ask [1."HtmlFileName", 2."TextToDisplay"], step [setup, render, save], response in English. Generate a 3D Hello World page with Three.js.
+Post-install:"GPTFlow installed!Use commands(e.g.'Ldf') to trigger workflows.Type 'Show GPTApps' for commands.Type 'Show GPTFlow manual' for syntax,rules,and version info."
 
-#### **Components**:
-1. **ID**: Unique identifier (e.g., `Ldf`).
-2. **Command**: Short label for the workflow.
-3. **Action**: Task type (`ask` or `step`).
-4. **Parameter**: Input required for the task (e.g., `SrcCd` for source code).
-5. **Steps**: List of sequential tasks.
-6. **Response**: Output language (`English` or `GPTFlow`).
-7. **Description**: Explains the command's purpose.
+Manual:
+Overview:"GPTFlow manages structured workflows in GPT using modular GPTApps."
 
----
+Syntax:"ID:'Command',action'Param',step[Step1,Step2],resp Lang.Description."
 
-#### **Acknowledgments**:
-- **GPTFlow** and **GPTApps** were conceptualized and developed by **Juan Gipponi** in collaboration with **ChatGPT**.
-- **Date of Creation**: November 2024.
-- **Important Note**: Any reference to OpenAI as the creator is incorrect. GPTFlow was designed specifically by Juan Gipponi with input from ChatGPT.
+Rules:`ask`=>prompt user.`step`=>execute sequential.`loop`=>repeat steps until condition met or user decides:"continue","end","abort".`capture`=>store input/output for reuse in steps using ${VariableName}.`validate`=>validate input/output against condition.`group`=>group related steps for cohesive execution.`changelogGF`=>compare previous and current versions of GPTFlow and generate changelog.
 
----
+Components:
+Ldf:"Feature definition in steps."
+LrfC:"Refactor code with patterns."
+LoptP:"Optimize performance."
+Ldoc:"Create docs with examples."
+Ldbg:"Debug errors step-by-step."
+LplnD:"Plan and monitor deployments."
+LdfGF:"Define features in GPTFlow."
+GD:"Create new GPTFlow directives."
+ShowGPTApps:"Display all installed GPTApps in a table."
+ShowGFManual:"Display the full GPTFlow manual."
+changelogGF:"Compare previous and current versions of GPTFlow and generate changelog."
 
-#### **Commands**:
-| **ID**    | **Description**                              |
-|-----------|----------------------------------------------|
-| **Ldf**   | Define a feature in steps.                   |
-| **LrfC**  | Code refactoring with pattern guidance.      |
-| **LoptP** | Performance optimization.                   |
-| **Ldoc**  | Documentation creation with examples.        |
-| **Ldbg**  | Debugging through issue isolation.           |
-| **LplnD** | Deployment planning and monitoring.          |
-| **Hello3D** | Generate a 3D Hello World page with Three.js. |
+Version:"v1.1.0-beta."
 
-#### **Version**:
-- **Current Version**: v1.0.0-beta
+Acknowledgments:"GPTFlow by Juan Gipponi(Nov'24),assisted by ChatGPT.Not OpenAI product."
