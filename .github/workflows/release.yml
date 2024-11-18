@@ -10,9 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Extract Release Notes from CHANGELOG.md
+      - name: Extract Release Notes
+        id: extract_notes
+        run: |
+          version="${GITHUB_REF##*/}" # Extract the tag name
+          echo "Extracting release notes for version $version"
+          awk "/^## $version/,/^## /{if (\$0 !~ /^## $version/) print}" CHANGELOG.md | sed '$d' > RELEASE_NOTES.md
+          echo "Release notes extracted:"
+          cat RELEASE_NOTES.md
+
+      # Step 3: Create a GitHub Release
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
@@ -24,7 +36,8 @@ jobs:
           prerelease: ${{ contains(github.ref_name, '-beta') }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Release Asset (Installer)
+      # Step 4: Upload Installer.gf as a release asset
+      - name: Upload Installer Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -32,7 +45,8 @@ jobs:
           asset_name: INSTALLER.gf
           asset_content_type: text/plain
 
-      - name: Upload Release Asset (Manual)
+      # Step 5: Upload GPTFlow Manual as a release asset
+      - name: Upload Manual Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
