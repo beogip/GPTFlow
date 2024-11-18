@@ -35,6 +35,13 @@ GF: "Hello3D", ask [1."HtmlFileName", 2."TextToDisplay"], step [setup, render, s
 - **[GPTFlow Manual](./GPTFlow_Manual.md)**: Learn about syntax, components, and rules for creating your own GPTApps.
 - **[Changelog](./CHANGELOG.md)**: See the history of updates and changes in GPTFlow.
 
+## Releases
+Releases are automated with GitHub Actions:
+- Tags like `vX.Y.Z-beta` trigger pre-releases.
+- Tags like `vX.Y.Z` trigger stable releases.
+
+View the latest release here: [Releases](https://github.com/beogip/GPTFlow/releases)
+
 ## License
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
