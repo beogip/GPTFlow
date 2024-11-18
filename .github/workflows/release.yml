@@ -1,4 +1,4 @@
-name: Release Automation
+name: Create Release
 
 on:
   push:
@@ -6,53 +6,36 @@ on:
       - 'v*'
 
 jobs:
-  create-release:
-    name: Create GitHub Release
+  release:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Generate Release Notes
-      id: release_notes
-      run: |
-        echo "## GPTFlow Release ${GITHUB_REF_NAME}" > RELEASE_NOTES.md
-        echo "### Overview" >> RELEASE_NOTES.md
-        echo "Automatic release for version ${GITHUB_REF_NAME}." >> RELEASE_NOTES.md
-        echo "### Changelog" >> RELEASE_NOTES.md
-        echo "$(cat CHANGELOG.md)" >> RELEASE_NOTES.md
+      - name: Create GitHub Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-beta') }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create GitHub Release
-      uses: ncipollo/release-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ github.ref_name }}
-        name: GPTFlow Release ${{ github.ref_name }}
-        body_path: RELEASE_NOTES.md
-        draft: false
-        prerelease: ${{ contains(github.ref_name, '-beta') }}
+      - name: Upload Release Asset (Installer)
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./INSTALLER.gf
+          asset_name: INSTALLER.gf
+          asset_content_type: text/plain
 
-    - name: Upload Assets
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: INSTALLER.gf
-        asset_name: INSTALLER.gf
-        asset_content_type: text/plain
-
-    - name: Upload Manual
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: GPTFlow_Manual.md
-        asset_name: GPTFlow_Manual.md
-        asset_content_type: text/plain
-
-    - name: Upload Changelog
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: CHANGELOG.md
-        asset_name: CHANGELOG.md
-        asset_content_type: text/plain
+      - name: Upload Release Asset (Manual)
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./GPTFlow_Manual.md
+          asset_name: GPTFlow_Manual.md
+          asset_content_type: text/markdown
