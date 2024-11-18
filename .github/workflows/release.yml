@@ -44,7 +44,6 @@ jobs:
           asset_path: ./INSTALLER.gf
           asset_name: INSTALLER.gf
           asset_content_type: text/plain
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 5: Upload GPTFlow Manual as a release asset
       - name: Upload Manual Asset
@@ -54,4 +53,3 @@ jobs:
           asset_path: ./GPTFlow_Manual.md
           asset_name: GPTFlow_Manual.md
           asset_content_type: text/markdown
-          token: ${{ secrets.GITHUB_TOKEN }}
