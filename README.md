@@ -1,4 +1,4 @@
-# GPTFlow - v1.1.1-beta
+# GPTFlow
 
 ## Overview
 GPTFlow is a compact framework designed to structure workflows in GPT models. It simplifies complex tasks by organizing them into modular, repeatable commands called GPTApps. From defining features to debugging code, GPTFlow streamlines task automation and ensures efficient execution.
