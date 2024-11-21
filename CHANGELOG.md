@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.2.0-beta
+**Release Date**: November 2024
+
+### New Features and Updates
+
+1. **New Directives Introduced**:
+   - **`run`**: Executes attached text as GPTFlow code.
+   - **`error`**: Stops execution with an error message for explicit halting.
+
+2. **Improved Execution Rules**:
+   - Enforced adherence to directive rules for executing GPTApps.
+   - Explicit handling of invalid GPTApps with user notifications.
+
+3. **Updated GPTApps**:
+   - Enhanced definitions to align with the latest framework updates, ensuring proper use of directives (`ask`, `step`, etc.).
+
+4. **Refined Post-installation Process**:
+   - Clear messaging after installation to guide users on available commands and manual access.
+
+---
+
 ## v1.1.2-beta
 **Release Date**: November 2024
 
