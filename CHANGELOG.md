@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.1.2-beta
+**Release Date**: November 2024
+
+### Updates to GPTApps
+1. **Enhanced Sequential Execution**:
+   - Updated the following GPTApps for stricter step-by-step execution using the `step` directive:
+     - **`Ldf`**: Improved clarity in defining features step-by-step.
+     - **`LrfC`**: Explicit pattern recognition and testing steps for code refactoring.
+     - **`LoptP`**: More granular steps for frontend and backend optimization.
+     - **`Ldoc`**: Refined steps for writing documentation, generating examples, and adding best practices.
+     - **`Ldbg`**: Clearer step-by-step debugging, including issue isolation, diagnosis, and testing fixes.
+     - **`LplnD`**: Added environment validation, rollback setup, and deployment monitoring steps.
+     - **`LdfGF`**: Improved formatting for defining features in GPTFlow syntax.
+     - **`GD`**: Enhanced flow for creating and testing new directives, ensuring they update the manual correctly.
+
+2. **Enhanced Post-Installation Verification**:
+   - Improved execution flow for the `TestGF` GPTApp to validate installations, ensuring compatibility with lightweight models.
+
+3. **Improved Manual Accessibility**:
+   - Refined `ShowGFManual` to always include clear, human-readable descriptions for all components.
+
+4. **Bug Fixes**:
+   - Resolved inconsistencies in `ShowGPTApps` and `ShowGFManual` outputs, ensuring accurate and user-friendly display of GPTApps and the manual.
+
+5. **Performance Enhancements**:
+   - Optimized execution of directives (`ask`, `step`) and their integration with lightweight models like GPT-4 Mini.
+
+---
+
 ## v1.1.1-beta
 **Release Date**: November 2024
 

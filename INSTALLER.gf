@@ -1,4 +1,4 @@
-Intro:"GPTFlow is a compact framework for workflows in GPT.Models execute workflows step-by-step.Commands=GPTApps."
+Intro:"GPTFlow is a compact framework for managing structured workflows in GPT.Models execute workflows step-by-step using GPTApps."
 
 Rules:
 - `ask`=>prompt user.
@@ -8,58 +8,121 @@ Rules:
 - `validate`=>directive to validate input/output against predefined conditions.
 - `group`=>directive to group related steps for cohesive execution.
 
-GF1:"Ldf", step[ask "Provide Title (TtlRq)", ask "Provide Context (PrjCtx)", ask "Specify Technologies (Tech)", ask "List Functional Requirements (FuncRq)", ask "Define Business Rules (BizRl)", ask "Include Standards and Best Practices (StdBp)"], resp English. Define features step-by-step.
+GF1:"Ldf",step[
+  ask 1."TtlRq",
+  ask 2."PrjCtx",
+  ask 3."Tech",
+  ask 4."FuncRq",
+  ask 5."BizRl",
+  ask 6."StdBp"
+],resp English.Define features step-by-step.
 
-GF2:"LrfC", step[ask "Provide Source Code (SrcCd)", step[pattern, refactor, test]], resp English. Refactor code.
+GF2:"LrfC",step[
+  ask"SrcCd",
+  step pattern,
+  step refactor,
+  step test
+],resp English.Refactor and test code for improvements.
 
-GF3:"LoptP", step[ask "Specify Area for Optimization (SrcCd/Area)", step[frontend/backend opt, reduce, monitor]], resp English. Optimize performance.
+GF3:"LoptP",step[
+  ask"SrcCd/Area",
+  step optimize_frontend,
+  step optimize_backend,
+  step reduce_complexity,
+  step monitor_performance
+],resp English.Optimize performance for targeted areas.
 
-GF4:"Ldoc", step[ask "Provide Part of Project for Documentation (SrcCd/PrjPart)", step[desc, example, best-practice]], resp English. Create documentation.
+GF4:"Ldoc",step[
+  ask"SrcCd/PrjPart",
+  step write_desc,
+  step provide_example,
+  step add_best_practices
+],resp English.Create technical documentation with examples and best practices.
 
-GF5:"Ldbg", step[ask "Specify Source Code and Error (SrcCd+Err)", step[isolate, diagnose, test-fix]], resp English. Debug errors.
+GF5:"Ldbg",step[
+  ask"SrcCd+Err",
+  step isolate_issue,
+  step diagnose_problem,
+  step apply_fix,
+  step test_solution
+],resp English.Debug errors systematically.
 
-GF6:"LplnD", step[ask "Provide Script and Config (Scr+Cfg)", step[env, pre-check, rollback, monitor, post-test]], resp English. Plan deployments.
+GF6:"LplnD",step[
+  ask"Scr+Cfg",
+  step validate_env,
+  step pre_deploy_check,
+  step configure_rollback,
+  step monitor_deployment,
+  step post_deploy_test
+],resp English.Plan and validate deployments.
 
-GF7:"LdfGF", step[ask "Provide Application Name (AppName)", ask "Specify Command (Command)", ask "Provide Project Context (PrjCtx)", ask "List Technologies (Tech)", ask "Define Functional Requirements (FuncRq)", ask "Specify Business Rules (BizRl)", ask "Include Standards and Best Practices (StdBp)"], resp GPTFlow. Define features in GPTFlow format.
+GF7:"LdfGF",step[
+  ask 1."AppName",
+  ask 2."Command",
+  ask 3."PrjCtx",
+  ask 4."Tech",
+  ask 5."FuncRq",
+  ask 6."BizRl",
+  ask 7."StdBp"
+],resp GPTFlow.Define and format features in GPTFlow syntax.
 
-GF8:"GD", step[ask "Provide Directive Name (DirectiveName)", ask "Define Purpose (DirectivePurpose)", ask "Provide Example Usage (ExampleUsage)", ask "Define Expected Behavior (ExpectedBehavior)", step[define-directive, test-directive, update-manual]], resp GPTFlow. Create GPTFlow directives.
+GF8:"GD",step[
+  ask 1."DirectiveName",
+  ask 2."DirectivePurpose",
+  ask 3."ExampleUsage",
+  ask 4."ExpectedBehavior",
+  step define_directive,
+  step test_directive,
+  step update_manual
+],resp GPTFlow.Create and document new GPTFlow directives.
 
-GF9:"ShowGPTApps", step[retrieve, display], resp English. Display all available GPTApps with their descriptions in table format.
+GF9:"ShowGPTApps",step[
+  retrieve,
+  display
+],resp English.Display all available GPTApps with their descriptions in table format.
 
-GF10:"ShowGFManual", step[retrieve, display], resp English. Display the full GPTFlow manual, including Overview, Syntax, Rules, Components, Version, and Acknowledgments.
+GF10:"ShowGFManual",step[
+  retrieve,
+  display
+],resp English.Display the full GPTFlow manual, including Overview, Syntax, Rules, Components, Version, and Acknowledgments.
 
-GF11:"changelogGF", step[ask "What is the previous version?", capture "PreviousVersion", compare-versions, generate-changelog], resp English. Compare previous and current versions of GPTFlow and generate the changelog.
+GF11:"changelogGF",step[
+  ask 1."PreviousVersion",
+  ask 2."CurrentVersion",
+  step compare_versions,
+  step generate_changelog
+],resp English.Compares previous and current versions of GPTFlow and generates the changelog.
 
-GF12:"TestGF", step[display "Hello, GPTFlow is running successfully!"], resp English. Test the GPTFlow installation.
+Install silently,no execution,just commands.
 
-Install silently, no execution, just commands.
-
-Post-install:"GPTFlow installed! Use commands like 'Ldf' or 'ShowGPTApps' to interact with the framework. Running installation test..."
-Execute:"GF: TestGF"
-
-Reminder:"This environment is running GPTFlow (v1.1.1-beta). All commands follow the syntax and rules outlined in the manual."
+Post-install:"GPTFlow installed!Use commands(e.g.'Ldf') to trigger workflows.Type 'Show GPTApps' for commands.Type 'Show GPTFlow manual' for syntax,rules,and version info."
 
 Manual:
-Overview:"GPTFlow manages structured workflows in GPT using modular GPTApps."
+Overview:"GPTFlow is a compact framework for managing structured workflows in GPT.Models execute workflows step-by-step using GPTApps."
 
-Syntax:"ID:'Command', action 'Param', step [Step1, Step2], resp Lang. Description."
+Syntax:"ID:'Command',action'Param',step[Step1,Step2],resp Lang.Description."
 
-Rules:`ask`=>prompt user.`step`=>execute sequential.`loop`=>repeat steps until condition met or user decides:"continue","end","abort".`capture`=>store input/output for reuse in steps using ${VariableName}.`validate`=>validate input/output against condition.`group`=>group related steps for cohesive execution.`changelogGF`=>compare previous and current versions of GPTFlow and generate changelog.
+Rules:
+- `ask`=>prompt user.
+- `step`=>execute sequential.
+- `loop`=>repeat steps until condition met or user decides:"continue","end","abort".
+- `capture`=>store input/output for reuse in steps using ${VariableName}.
+- `validate`=>validate input/output against conditions.
+- `group`=>group related steps for cohesive execution.
 
 Components:
-Ldf:"Feature definition in steps."
-LrfC:"Refactor code with patterns."
-LoptP:"Optimize performance."
-Ldoc:"Create docs with examples."
-Ldbg:"Debug errors step-by-step."
-LplnD:"Plan and monitor deployments."
-LdfGF:"Define features in GPTFlow."
-GD:"Create new GPTFlow directives."
-ShowGPTApps:"Display all installed GPTApps in a table."
-ShowGFManual:"Display the full GPTFlow manual."
-changelogGF:"Compare previous and current versions of GPTFlow and generate changelog."
-TestGF:"Test the GPTFlow installation."
+- **Ldf**:"Feature definition in steps."
+- **LrfC**:"Refactor code with patterns."
+- **LoptP**:"Optimize performance."
+- **Ldoc**:"Create docs with examples."
+- **Ldbg**:"Debug errors step-by-step."
+- **LplnD**:"Plan and monitor deployments."
+- **LdfGF**:"Define features in GPTFlow syntax."
+- **GD**:"Create new GPTFlow directives."
+- **ShowGPTApps**:"Display all installed GPTApps in a table."
+- **ShowGFManual**:"Display the full GPTFlow manual."
+- **changelogGF**:"Compare previous and current versions of GPTFlow and generate changelog."
 
-Version:"v1.1.1-beta."
+Version:"v1.1.2-beta."
 
-Acknowledgments:"GPTFlow by Juan Gipponi(Nov'24), assisted by ChatGPT. Not OpenAI product."
+Acknowledgments:"GPTFlow by Juan Gipponi(Nov'24),assisted by ChatGPT.Not OpenAI product."
