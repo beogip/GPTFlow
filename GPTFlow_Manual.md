@@ -50,7 +50,7 @@ ID: “Command”, action “Parameter”, step [Step1, Step2], resp Lang. Descr
 | **CreatePRDoc** | Generate a pull request summary in Markdown format.      |
 
 ## Version
-**Current Version**: v1.2.0-beta
+**Current Version**: v1.3.0-beta
 
 ## Acknowledgments
 **GPTFlow** was created by **Juan Gipponi** in collaboration with **ChatGPT** in November 2024. It is not an OpenAI product but was designed to streamline structured workflows in GPT environments.

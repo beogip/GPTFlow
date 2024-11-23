@@ -1,5 +1,37 @@
 # Changelog
 
+## v1.3.0-beta
+**Release Date**: November 2024
+
+### New Features
+1. **Enhanced Post-Installation Options**:
+   - After installing GPTFlow, users are now prompted with an option to install the **Essential GPTApps**. 
+   - Essential GPTApps include:
+     - **Ldf**: Define features step-by-step.
+     - **Ldoc**: Create documentation with examples.
+     - **LdfGF**: Define features in GPTFlow syntax.
+
+2. **Introduction of `essentials.gf`**:
+   - Essential GPTApps are packaged in a dedicated `.gf` file for easy installation.
+   - Users can download and install the file manually if they skip the post-install prompt.
+   - [Essentials.gf file link](https://raw.githubusercontent.com/beogip/GPTFlow/refs/heads/main/GPTAppsPackages/essentials.gf).
+
+3. **Streamlined GPTApps**:
+   - Default GPTApps include:
+     - **ShowGPTApps**: Displays all installed GPTApps in a table.
+     - **ShowGFManual**: Provides a clickable link to the full manual on GitHub.
+   - These ensure users can navigate and understand GPTFlow commands efficiently.
+
+4. **Updated Manual Accessibility**:
+   - The manual is now hosted online, accessible through a direct link in the `ShowGFManual` GPTApp.
+
+### Improvements
+- **Optimized Installer**:
+  - Reduced complexity by separating default and essential GPTApps.
+  - Improved clarity in post-installation messages.
+
+---
+
 ## v1.2.0-beta
 **Release Date**: November 2024
 
