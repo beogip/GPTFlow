@@ -31,7 +31,7 @@ Display:
 
 If the user says 'No', display:
 "You can manually install the Essential GPTApps from:  
-[Download essentials.gf](https://github.com/beogip/GPTFlow/essentials.gf)"
+[Download essentials.gf](https://raw.githubusercontent.com/beogip/GPTFlow/refs/heads/main/GPTAppsPackages/essentials.gf)"
 
 Default GPTApps:
 GF1: "ShowGPTApps", step [retrieve, display], resp English. Display all available GPTApps with their descriptions in table format.
