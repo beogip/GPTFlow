@@ -1,0 +1,3 @@
+GF3: "Ldf", step [ask 1."TtlRq", ask 2."PrjCtx", ask 3."Tech", ask 4."FuncRq", ask 5."BizRl", ask 6."StdBp"], resp English. Define features step-by-step.
+GF4: "Ldoc", step [ask "SrcCd/PrjPart", step write_desc, step provide_example, step add_best_practices], resp English. Create docs with examples.
+GF5: "LdfGF", step [ask 1."AppName", ask 2."Command", ask 3."PrjCtx", ask 4."Tech", ask 5."FuncRq", ask 6."BizRl", ask 7."StdBp"], resp GPTFlow. Define features in GPTFlow syntax.
